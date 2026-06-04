@@ -96,32 +96,32 @@ export default function TripSummary({
 
     <div className="bg-zinc-800 p-4 rounded-xl">
       <h3 className="font-bold text-orange-400 mb-2">🌦 Weather</h3>
-      <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-        {result.weather}
-      </pre>
+      <div className="whitespace-pre-wrap text-gray-300 text-sm">
+  {result.weather}
+</div>
     </div>
 
     <div className="bg-zinc-800 p-4 rounded-xl">
       <h3 className="font-bold text-orange-400 mb-2">🏨 Hotels</h3>
-      <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-        {result.hotels}
-      </pre>
+      <div className="whitespace-pre-wrap text-gray-300 text-sm">
+  {result.hotels}
+</div>
     </div>
 
     <div className="bg-zinc-800 p-4 rounded-xl">
       <h3 className="font-bold text-orange-400 mb-2">🚕 Transport</h3>
-      <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-        {result.transport}
-      </pre>
+      <div className="whitespace-pre-wrap text-gray-300 text-sm">
+  {result.transport}
+</div>
     </div>
 
     <div className="bg-zinc-800 p-4 rounded-xl">
       <h3 className="font-bold text-orange-400 mb-2">
         💰 Budget Breakdown
       </h3>
-      <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-        {result.budget_breakdown}
-      </pre>
+      <div className="whitespace-pre-wrap text-gray-300 text-sm">
+  {result.budget_breakdown}
+</div>
     </div>
 
     <div className="bg-zinc-800 p-4 rounded-xl max-h-[500px] overflow-y-auto">
@@ -131,12 +131,7 @@ export default function TripSummary({
       </pre>
     </div>
 
-    <div className="bg-zinc-800 p-4 rounded-xl max-h-[500px] overflow-y-auto">
-      <h3 className="font-bold text-orange-400 mb-2">📋 Final Report</h3>
-      <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-        {result.final_report}
-      </pre>
-    </div>
+    
 
   </div>
 )}

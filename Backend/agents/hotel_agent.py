@@ -1,39 +1,58 @@
-"""Hotel recommendation agent for the travel planner graph.
-
-This agent uses destination, budget, and travel type from TravelState to create
-three hotel recommendation tiers. It does not call a live booking API yet; it
-returns useful category-level recommendations that can later be replaced with
-real provider data.
-"""
-
 from ..state import TravelState
-
-
-def _budget_context(budget: float) -> str:
-    if budget <= 0:
-        return "with flexible pricing"
-    if budget < 20000:
-        return "with strong value and low nightly rates"
-    if budget < 75000:
-        return "with a balanced comfort-to-cost ratio"
-    return "with premium comfort and strong amenities"
 
 
 def hotel_agent(state: TravelState) -> TravelState:
     destination = state.get("destination", "the destination")
     budget = state.get("budget", 0)
     travel_type = state.get("travel_type", "general")
-    budget_context = _budget_context(budget)
 
-    hotels = (
-        f"Hotel recommendations for a {travel_type} trip to {destination} "
-        f"{budget_context}:\n"
-        f"- Budget hotel: Choose a clean guesthouse, hostel, or 2-star stay near "
-        f"public transport and main attractions in {destination}.\n"
-        f"- Mid-range hotel: Choose a 3-star boutique hotel or serviced apartment "
-        f"with breakfast, good reviews, and easy access to sightseeing areas.\n"
-        f"- Luxury hotel: Choose a 4-star or 5-star resort or premium hotel with "
-        f"spacious rooms, concierge support, dining options, and reliable transport access."
-    )
+    if budget < 20000:
+        hotels = f"""
+🏨 Recommended Budget Hotels in {destination}
+
+1. Zostel {destination}
+💰 ₹800 - ₹1500/night
+⭐ Best for solo travelers and friends
+
+2. FabHotel Prime
+💰 ₹1500 - ₹2500/night
+⭐ Budget-friendly with good amenities
+
+3. Treebo Trend Hotel
+💰 ₹2000 - ₹3000/night
+⭐ Comfortable stay with breakfast
+"""
+    elif budget < 75000:
+        hotels = f"""
+🏨 Recommended Mid-Range Hotels in {destination}
+
+1. BloomSuites {destination}
+💰 ₹3500 - ₹5000/night
+⭐ Great for {travel_type} trips
+
+2. Fairfield by Marriott
+💰 ₹4500 - ₹7000/night
+⭐ Excellent comfort and location
+
+3. Lemon Tree Hotel
+💰 ₹4000 - ₹6500/night
+⭐ Popular among families and groups
+"""
+    else:
+        hotels = f"""
+🏨 Luxury Stays in {destination}
+
+1. Taj Resort
+💰 ₹12000+/night
+⭐ Premium luxury experience
+
+2. Marriott Resort & Spa
+💰 ₹15000+/night
+⭐ Beachfront and luxury amenities
+
+3. Hyatt Centric
+💰 ₹10000+/night
+⭐ High-end stay with premium services
+"""
 
     return {"hotels": hotels}

@@ -22,19 +22,55 @@ itinerary_prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are an expert travel planner. Create a clear day-wise itinerary. "
-            "Use the destination, trip length, budget, travel type, and interests. "
-            "Keep the plan practical, organized, and suitable for the user's style.",
+            """
+You are an AI Travel Planner.
+
+Generate a concise and practical travel plan.
+
+Rules:
+- Do NOT write long paragraphs.
+- Keep the response easy to scan.
+- Use emojis where relevant.
+- Give a time-wise itinerary.
+- Maximum 4-5 activities per day.
+- Mention estimated cost per day.
+- Focus on actionable recommendations.
+- Avoid repeating information.
+            """,
         ),
         (
             "human",
-            "Destination: {destination}\n"
-            "Days: {days}\n"
-            "Budget: {budget}\n"
-            "Travel type: {travel_type}\n"
-            "Interests: {interests}\n\n"
-            "Generate a day-wise itinerary with morning, afternoon, and evening plans. "
-            "Include budget-aware suggestions where useful.",
+            """
+Destination: {destination}
+Days: {days}
+Budget: {budget}
+Travel Type: {travel_type}
+Interests: {interests}
+
+Create output in this format:
+
+📍 Trip Overview
+Destination:
+Duration:
+Budget:
+Travel Style:
+
+📅 Day 1
+⏰ 09:00 AM - Activity
+⏰ 01:00 PM - Activity
+⏰ 06:00 PM - Activity
+💰 Estimated Spend: ₹XXXX
+
+📅 Day 2
+...
+
+Important:
+- Keep each day under 5 activities.
+- No long explanations.
+- No storytelling.
+- No unnecessary paragraphs.
+- Make it look like a real travel planner dashboard.
+            """,
         ),
     ]
 )

@@ -54,28 +54,31 @@ def _build_weather_summary(destination: str, weather_data: dict[str, Any]) -> st
     main = weather_data.get("main", {})
     wind = weather_data.get("wind", {})
 
-    description = weather.get("description", "weather conditions unavailable")
-    temperature = main.get("temp")
-    feels_like = main.get("feels_like")
-    humidity = main.get("humidity")
-    wind_speed = wind.get("speed")
+    description = weather.get("description", "Unavailable").title()
+    temperature = main.get("temp", 0)
+    feels_like = main.get("feels_like", 0)
+    humidity = main.get("humidity", 0)
+    wind_speed = wind.get("speed", 0)
 
-    summary = f"Weather in {destination}: {description}."
+    if temperature >= 30:
+        tip = "Carry water, sunglasses, and light clothing."
+    elif temperature >= 20:
+        tip = "Comfortable weather for sightseeing."
+    else:
+        tip = "Carry a light jacket for outdoor activities."
 
-    if temperature is not None:
-        summary += f" Temperature is around {temperature:.1f} deg C"
-        if feels_like is not None:
-            summary += f", feeling like {feels_like:.1f} deg C"
-        summary += "."
+    return f"""
+🌤 Weather Snapshot - {destination}
 
-    if humidity is not None:
-        summary += f" Humidity is {humidity}%."
+🌡 Temperature: {temperature:.1f}°C
+🤗 Feels Like: {feels_like:.1f}°C
+☁ Condition: {description}
+💧 Humidity: {humidity}%
+💨 Wind Speed: {wind_speed} m/s
 
-    if wind_speed is not None:
-        summary += f" Wind speed is about {wind_speed} m/s."
-
-    summary += " Pack accordingly and check the forecast again before departure."
-    return summary
+💡 Travel Tip:
+{tip}
+"""
 
 
 def weather_agent(state: TravelState) -> TravelState:
