@@ -1,6 +1,8 @@
 import DestinationCard from "./DestinationCard";
 
-export default function RecommendedSection() {
+export default function RecommendedSection({
+  setDestination,
+})  {
   const destinations = [
     {
       image:
@@ -48,12 +50,13 @@ export default function RecommendedSection() {
       <div className="grid grid-cols-4 gap-6">
         {destinations.map((destination, index) => (
           <DestinationCard
-            key={index}
-            image={destination.image}
-            title={destination.title}
-            location={destination.location}
-            price={destination.price}
-          />
+  key={index}
+  image={destination.image}
+  title={destination.title}
+  location={destination.location}
+  price={destination.price}
+  setDestination={setDestination}
+/>
         ))}
       </div>
     </div>

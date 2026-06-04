@@ -3,6 +3,7 @@ export default function DestinationCard({
   title,
   location,
   price,
+  setDestination,
 }) {
   return (
     <div className="bg-zinc-900 rounded-3xl overflow-hidden hover:scale-105 transition duration-300">
@@ -21,9 +22,12 @@ export default function DestinationCard({
           {price}
         </p>
 
-        <button className="mt-4 bg-orange-500 px-4 py-2 rounded-xl">
-          Explore
-        </button>
+        <button
+  onClick={() => setDestination(title)}
+  className="mt-4 bg-orange-500 px-4 py-2 rounded-xl"
+>
+  Explore
+</button>
       </div>
     </div>
   );

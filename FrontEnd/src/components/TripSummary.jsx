@@ -43,7 +43,9 @@ export default function TripSummary({
 
   return (
     <div className="bg-zinc-900 rounded-3xl p-6">
-      <h2 className="text-2xl font-bold mb-4">Trip Planner</h2>
+      <h2 className="text-2xl font-bold mb-4 text-orange-400">
+  ✈️ Trip Planner
+</h2>
 
       <div className="space-y-3">
         <input
@@ -93,29 +95,41 @@ export default function TripSummary({
 
       {result && (
   <div className="mt-6 space-y-6">
+    <div className="bg-orange-500 text-black p-5 rounded-2xl">
+  <h3 className="text-2xl font-bold mb-2">
+    📍 {result.destination}
+  </h3>
 
-    <div className="bg-zinc-800 p-4 rounded-xl">
+  <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
+    <p>📅 {result.days} Days</p>
+    <p>💰 ₹{result.budget}</p>
+    <p>✈️ {result.travel_type}</p>
+    <p>🎯 {result.interests?.join(", ")}</p>
+  </div>
+</div>
+
+    <div className="bg-zinc-800 p-5 rounded-2xl border border-zinc-700">
       <h3 className="font-bold text-orange-400 mb-2">🌦 Weather</h3>
       <div className="whitespace-pre-wrap text-gray-300 text-sm">
   {result.weather}
 </div>
     </div>
 
-    <div className="bg-zinc-800 p-4 rounded-xl">
+    <div className="bg-zinc-800 p-5 rounded-2xl border border-zinc-700">
       <h3 className="font-bold text-orange-400 mb-2">🏨 Hotels</h3>
       <div className="whitespace-pre-wrap text-gray-300 text-sm">
   {result.hotels}
 </div>
     </div>
 
-    <div className="bg-zinc-800 p-4 rounded-xl">
+    <div className="bg-zinc-800 p-5 rounded-2xl border border-zinc-700">
       <h3 className="font-bold text-orange-400 mb-2">🚕 Transport</h3>
       <div className="whitespace-pre-wrap text-gray-300 text-sm">
   {result.transport}
 </div>
     </div>
 
-    <div className="bg-zinc-800 p-4 rounded-xl">
+    <div className="bg-zinc-800 p-5 rounded-2xl border border-zinc-700">
       <h3 className="font-bold text-orange-400 mb-2">
         💰 Budget Breakdown
       </h3>
