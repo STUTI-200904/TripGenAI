@@ -2,35 +2,51 @@ import DestinationCard from "./DestinationCard";
 
 export default function RecommendedSection({
   setDestination,
+  setDays,
+  setBudget,
+  setTravelType,
+  setInterests,
 })  {
   const destinations = [
     {
       image:
         "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600",
       title: "Bali",
-      location: "Indonesia",
-      price: "₹45,000",
+  location: "Indonesia",
+  price: "₹45,000",
+  days: 4,
+  travelType: "Couple",
+  interests: "Beach",
     },
     {
       image:
         "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600",
       title: "Tokyo",
-      location: "Japan",
-      price: "₹85,000",
+  location: "Japan",
+  price: "₹85,000",
+  days: 6,
+  travelType: "Solo",
+  interests: "Technology",
     },
     {
       image:
         "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600",
       title: "Dubai",
-      location: "UAE",
-      price: "₹70,000",
+  location: "UAE",
+  price: "₹70,000",
+  days: 5,
+  travelType: "Family",
+  interests: "Shopping",
     },
     {
       image:
         "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600",
       title: "Paris",
-      location: "France",
-      price: "₹95,000",
+  location: "France",
+  price: "₹95,000",
+  days: 5,
+  travelType: "Couple",
+  interests: "Sightseeing",
     },
   ];
 
@@ -55,7 +71,14 @@ export default function RecommendedSection({
   title={destination.title}
   location={destination.location}
   price={destination.price}
+  days={destination.days}
+  travelType={destination.travelType}
+  interests={destination.interests}
   setDestination={setDestination}
+  setDays={setDays}
+  setBudget={setBudget}
+  setTravelType={setTravelType}
+  setInterests={setInterests}
 />
         ))}
       </div>

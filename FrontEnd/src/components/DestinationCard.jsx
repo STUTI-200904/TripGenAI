@@ -3,7 +3,14 @@ export default function DestinationCard({
   title,
   location,
   price,
+  days,
+  travelType,
+  interests,
   setDestination,
+  setDays,
+  setBudget,
+  setTravelType,
+  setInterests,
 }) {
   return (
     <div className="bg-zinc-900 rounded-3xl overflow-hidden hover:scale-105 transition duration-300">
@@ -23,7 +30,13 @@ export default function DestinationCard({
         </p>
 
         <button
-  onClick={() => setDestination(title)}
+  onClick={() => {
+    setDestination(title);
+    setDays(days);
+    setBudget(price.replace(/[₹,]/g, ""));
+    setTravelType(travelType);
+    setInterests(interests);
+  }}
   className="mt-4 bg-orange-500 px-4 py-2 rounded-xl"
 >
   Explore

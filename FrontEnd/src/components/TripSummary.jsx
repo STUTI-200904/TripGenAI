@@ -4,12 +4,18 @@ import axios from "axios";
 export default function TripSummary({
   destination,
   setDestination,
-})  {
+  days,
+  setDays,
+  budget,
+  setBudget,
+  travelType,
+  setTravelType,
+  interests,
+  setInterests,
+  setTripGenerated,
+}) {
   
-  const [days, setDays] = useState("");
-  const [budget, setBudget] = useState("");
-  const [travelType, setTravelType] = useState("");
-  const [interests, setInterests] = useState("");
+  
 
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,6 +39,7 @@ export default function TripSummary({
       );
 
       setResult(response.data);
+      setTripGenerated(true);
     } catch (error) {
       console.error(error);
       alert("Failed to generate trip");

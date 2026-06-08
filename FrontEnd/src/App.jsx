@@ -8,6 +8,11 @@ import TripSummary from "./components/TripSummary";
 
 function App() {
   const [destination, setDestination] = useState("");
+  const [days, setDays] = useState("");
+  const [budget, setBudget] = useState("");
+  const [travelType, setTravelType] = useState("");
+  const [interests, setInterests] = useState("");
+  const [tripGenerated, setTripGenerated] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -19,16 +24,29 @@ function App() {
         
 
         <RecommendedSection
-          setDestination={setDestination}
-        />
+  setDestination={setDestination}
+  setDays={setDays}
+  setBudget={setBudget}
+  setTravelType={setTravelType}
+  setInterests={setInterests}
+/>
 
         <div className="grid grid-cols-2 gap-6 mt-10 pb-10">
-          <AgentPanel />
+          <AgentPanel tripGenerated={tripGenerated} />
 
           <TripSummary
-            destination={destination}
-            setDestination={setDestination}
-          />
+  destination={destination}
+  setDestination={setDestination}
+  days={days}
+  setDays={setDays}
+  budget={budget}
+  setBudget={setBudget}
+  travelType={travelType}
+  setTravelType={setTravelType}
+  interests={interests}
+  setInterests={setInterests}
+  setTripGenerated={setTripGenerated}
+/>
         </div>
       </main>
     </div>
